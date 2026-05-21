@@ -347,7 +347,7 @@ func (h *MultiHandler) abort(err error, culprits ...party.ID) {
 
 // Stop cancels the current execution of the protocol, and alerts the other users.
 func (h *MultiHandler) Stop() {
-	if h.err != nil || h.result != nil {
+	if h.err == nil && h.result == nil {
 		h.abort(errors.New("aborted by user"), h.currentRound.SelfID())
 	}
 }
